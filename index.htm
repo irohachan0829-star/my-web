@@ -1,4 +1,131 @@
-きらきら☆アドベンチャー！ニューシングルリリース
-ワクワクドキドキな明るい曲
 
-○○○○
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>キラキラ☆アドベンチャー | Insta風</title>
+	<style>
+		body {
+			background: #fafafa;
+			font-family: 'Segoe UI', 'Arial', sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 400px;
+			margin: 40px auto;
+			background: #fff;
+			border-radius: 16px;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+			padding: 24px 20px 16px 20px;
+			position: relative;
+		}
+		.profile {
+			display: flex;
+			align-items: center;
+			margin-bottom: 16px;
+		}
+		.avatar {
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			font-size: 24px;
+			font-weight: bold;
+			margin-right: 12px;
+		}
+		.username {
+			font-weight: bold;
+			font-size: 1.1em;
+		}
+		.music-title {
+			font-size: 1.3em;
+			font-weight: bold;
+			margin-bottom: 8px;
+		}
+		.music-player {
+			width: 100%;
+			margin-bottom: 12px;
+		}
+		.hashtags {
+			color: #00376b;
+			font-size: 0.98em;
+			margin-bottom: 12px;
+		}
+		.actions {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			margin-bottom: 8px;
+		}
+		.like-btn {
+			background: none;
+			border: none;
+			cursor: pointer;
+			font-size: 1.5em;
+			color: #ed4956;
+			transition: transform 0.1s;
+		}
+		.like-btn:active {
+			transform: scale(1.2);
+		}
+		.likes-count {
+			font-size: 1em;
+			color: #333;
+		}
+		.share-btn {
+			background: none;
+			border: none;
+			cursor: pointer;
+			font-size: 1.3em;
+			color: #0095f6;
+		}
+		.desc {
+			color: #444;
+			font-size: 1em;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="profile">
+			<div class="avatar">☆</div>
+			<div class="username">irohachan0829</div>
+		</div>
+		<div class="music-title">キラキラ☆アドベンチャー</div>
+		<audio class="music-player" controls>
+			<source src="キラキラ☆アドベンチャー.mp3" type="audio/mpeg">
+			お使いのブラウザはaudioタグをサポートしていません。
+		</audio>
+		<div class="hashtags">#キラキラアドベンチャー #音楽 #人気 #おすすめ #insta風</div>
+		<div class="actions">
+			<button class="like-btn" id="likeBtn">&#x2764;</button>
+			<span class="likes-count" id="likesCount">1234</span>
+			<button class="share-btn" onclick="shareMusic()">&#x1f517;</button>
+		</div>
+		<div class="desc">
+			みんなで楽しめるキラキラな冒険ソング！<br>
+			ぜひ聴いて、いいね＆シェアしてね♪
+		</div>
+	</div>
+	<script>
+		// いいねボタンのダミー動作
+		let likes = 1234;
+		document.getElementById('likeBtn').onclick = function() {
+			likes++;
+			document.getElementById('likesCount').textContent = likes;
+			this.style.color = '#d90429';
+		};
+		// シェアボタンのダミー動作
+		function shareMusic() {
+			alert('リンクをコピーしました！\n（ダミー動作）');
+		}
+	</script>
+</body>
+</html>
