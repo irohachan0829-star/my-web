@@ -21,6 +21,24 @@
 		.sparkle {
 			position: absolute;
 			width: 8px;
+			/* キラキラ降らせるアニメーション */
+			.sparkle {
+				position: fixed;
+				z-index: 0;
+				pointer-events: none;
+				width: 8px;
+				height: 8px;
+				background: radial-gradient(circle, #fff6f9 60%, #e0c3fc 100%);
+				border-radius: 50%;
+				opacity: 0.8;
+				box-shadow: 0 0 8px #fff6f9, 0 0 4px #e0c3fc;
+				animation: sparkle-fall linear forwards;
+			}
+			@keyframes sparkle-fall {
+				0% { transform: scale(1) translateY(0); opacity: 0.8; }
+				80% { opacity: 1; }
+				100% { transform: scale(1.2) translateY(100vh); opacity: 0; }
+			}
 			height: 8px;
 			background: radial-gradient(circle, #fff6f9 60%, #e0c3fc 100%);
 			border-radius: 50%;
@@ -66,6 +84,36 @@
 			color: #fff;
 			font-size: 28px;
 			font-weight: bold;
+		// キラキラを大量に降らせる
+		function createSparkle() {
+			const sparkle = document.createElement('div');
+			sparkle.className = 'sparkle';
+			// ランダムな位置・サイズ・色
+			const left = Math.random() * window.innerWidth;
+			const size = 6 + Math.random() * 10;
+			sparkle.style.left = left + 'px';
+			sparkle.style.top = '-16px';
+			sparkle.style.width = size + 'px';
+			sparkle.style.height = size + 'px';
+			// 色バリエーション
+			const colors = [
+				'#fff6f9', '#e0c3fc', '#f9ceec', '#ee2a7b', '#f9ce34', '#a45fcf'
+			];
+			const color = colors[Math.floor(Math.random() * colors.length)];
+			sparkle.style.background = `radial-gradient(circle, ${color} 60%, #fff6f9 100%)`;
+			// アニメーション時間
+			const duration = 2 + Math.random() * 2.5;
+			sparkle.style.animationDuration = duration + 's';
+			document.body.appendChild(sparkle);
+			// アニメーション終了後に削除
+			sparkle.addEventListener('animationend', () => {
+				sparkle.remove();
+			});
+		}
+		// 1秒間に複数個生成
+		setInterval(() => {
+			for(let i=0; i<8; i++) createSparkle();
+		}, 400);
 			margin-right: 14px;
 			box-shadow: 0 0 0 4px #fff6f9, 0 2px 8px #e0c3fc88;
 		}
